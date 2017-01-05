@@ -1,17 +1,6 @@
 import * as React from 'react';
 import {List, ListItem} from 'material-ui/List';
-
-export interface Story {
-  by: string;
-  descendants: number;
-  id: number;
-  kids: number[],
-  score: number;
-  time: number;
-  title: string;
-  type: string;
-  url: string;
-};
+import {Story} from '../types';
 
 const stories: Story[] = [{
   "by" : "dhouston",
