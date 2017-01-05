@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {List, ListItem} from 'material-ui/List';
 
-interface Story {
+export interface Story {
   by: string;
   descendants: number;
   id: number;
