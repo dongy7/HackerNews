@@ -38,6 +38,7 @@ class News extends React.Component<Props, null> {
             subtitle={`${ this.props.story.score } points by ${ this.props.story.by }`}
           />
         </Card>
+        <br/>
         <Card>
           <CardTitle
             title="Comments"

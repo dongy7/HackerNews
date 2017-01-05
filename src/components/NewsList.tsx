@@ -2,7 +2,7 @@ import * as React from 'react';
 import {List, ListItem} from 'material-ui/List';
 import {Story} from '../types';
 
-const stories: Story[] = [{
+export const stories: Story[] = [{
   "by" : "dhouston",
   "descendants" : 71,
   "id" : 8863,

@@ -1,5 +1,6 @@
 import * as React from 'react';
-import {List, ListItem} from 'material-ui/List';
+import {CardText} from 'material-ui/Card';
+import Divder from 'material-ui/Divider';
 import {Comment} from '../types';
 
 interface Props {
@@ -9,16 +10,20 @@ interface Props {
 class CommentList extends React.Component<Props, null> {
   render() {
     return (
-      <List>
+      <div>
         {this.props.comments.map(comment => {
           return (
-            <ListItem
-              primaryText={comment.text}
-              secondaryText={comment.by}
-            />
+            <div>
+              <CardText>
+                {comment.text}
+                <br />
+                {<b>{comment.by}</b>}
+              </CardText>
+              <Divder/>
+            </div>
           );
         })}
-      </List>
+      </div>
     );
   }
 };
