@@ -2,7 +2,7 @@ import {combineReducers} from 'redux';
 import {FETCH_NEWS_FULFILLED, FETCH_NEWS} from '../actions/news';
 
 const createRootReducer = () => {
-  const news = (state = [], action: Action) => {
+  const news = (state = [], action: Action<any>) => {
     switch (action.type) {
       case FETCH_NEWS:
         console.log('fetching');

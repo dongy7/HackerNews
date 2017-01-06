@@ -20,10 +20,13 @@ interface CommentItem {
   type: string;
 }
 
-interface Action {
+interface Action<T> {
   type: string;
-  payload: Object;
+  payload: T;
 }
+
+type NewsFetchRequestAction = Action<string>
+type NewsFetchFulfilledAction = Action<Story[]>
 
 interface State {
   news: Story[];
