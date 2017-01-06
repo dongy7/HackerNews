@@ -1,10 +1,9 @@
 import * as React from 'react';
 import {CardText} from 'material-ui/Card';
 import Divder from 'material-ui/Divider';
-import {Comment} from '../types';
 
 interface Props {
-  comments: Comment[];
+  comments: CommentItem[];
 };
 
 class CommentList extends React.Component<Props, null> {

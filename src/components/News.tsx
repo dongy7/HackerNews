@@ -1,13 +1,12 @@
 import * as React from 'react';
 import {Card, CardTitle, CardText} from 'material-ui/Card';
-import {Story, Comment} from '../types';
 import CommentList from './CommentList';
 
 interface Props {
   story: Story;
 };
 
-const comments: Comment[] = [
+const comments: CommentItem[] = [
   {
     "by" : "nickb",
     "id" : 8952,
