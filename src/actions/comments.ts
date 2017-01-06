@@ -1,9 +1,9 @@
 export const FETCH_COMMENTS = 'FETCH_COMMENTS';
 export const FETCH_COMMENTS_FULFILLED = 'FETCH_COMMENTS_FULFILLED';
 
-export const fetchComments = (ids: number[]): CommentFetchRequestAction => ({
+export const fetchComments = (id: string): CommentFetchRequestAction => ({
   type: FETCH_COMMENTS,
-  payload: ids,
+  payload: id,
 });
 
 export const fetchCommentsFulfilled = (res: CommentItem[]) => ({
