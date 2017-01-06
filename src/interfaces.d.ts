@@ -20,7 +20,7 @@ interface CommentItem {
   type: string;
 }
 
-type Payload = string|Story[]
+type Payload = string|Story[]|CommentItem[]|number[]
 
 interface Action<Payload> {
   type: string;
@@ -29,8 +29,10 @@ interface Action<Payload> {
 
 type NewsFetchRequestAction = Action<string>
 type NewsFetchFulfilledAction = Action<Story[]>
+type CommentFetchRequestAction = Action<number[]>
 
 interface State {
   news: Story[];
   isFetching: boolean;
+  comments: CommentItem[];
 }
