@@ -19,3 +19,8 @@ interface CommentItem {
   time: number;
   type: string;
 }
+
+interface Action {
+  type: string;
+  payload: Object;
+}
