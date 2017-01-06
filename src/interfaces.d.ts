@@ -24,3 +24,7 @@ interface Action {
   type: string;
   payload: Object;
 }
+
+interface State {
+  news: Story[];
+}
