@@ -1,8 +1,7 @@
 import * as React from 'react';
 import {List, ListItem} from 'material-ui/List';
 
-const NewsList = (props: { news: Story[], fetch: Function }) => {
-  props.fetch('topstories');
+const NewsList = (props: { news: Story[] }) => {
   return (
     <List>
       {props.news.map(story => {

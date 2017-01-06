@@ -20,9 +20,11 @@ interface CommentItem {
   type: string;
 }
 
-interface Action<T> {
+type Payload = string|Story[]
+
+interface Action<Payload> {
   type: string;
-  payload: T;
+  payload: Payload;
 }
 
 type NewsFetchRequestAction = Action<string>
@@ -30,4 +32,5 @@ type NewsFetchFulfilledAction = Action<Story[]>
 
 interface State {
   news: Story[];
+  isFetching: boolean;
 }
