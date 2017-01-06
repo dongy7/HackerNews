@@ -33,6 +33,13 @@
   dependencies:
     "@types/react" "*"
 
+"@types/react-redux@^4.4.35":
+  version "4.4.35"
+  resolved "https://registry.yarnpkg.com/@types/react-redux/-/react-redux-4.4.35.tgz#126c21a11956d03673257ccd179e43993fc8ad77"
+  dependencies:
+    "@types/react" "*"
+    redux "^3.6.0"
+
 "@types/react-router@^2.0.41":
   version "2.0.41"
   resolved "https://registry.yarnpkg.com/@types/react-router/-/react-router-2.0.41.tgz#4c2510dfa2d85651af2126aed681c70dbe2f0303"
