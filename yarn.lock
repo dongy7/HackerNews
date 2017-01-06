@@ -10,6 +10,10 @@
   version "16.0.3"
   resolved "https://registry.yarnpkg.com/@types/jest/-/jest-16.0.3.tgz#28a465586cd37d2638043ebcca91010ed89fc284"
 
+"@types/jquery@^2.0.39":
+  version "2.0.39"
+  resolved "https://registry.yarnpkg.com/@types/jquery/-/jquery-2.0.39.tgz#917fe65300dbc6ccbdfa7e2ee51159fbd29d7689"
+
 "@types/material-ui@^0.16.46":
   version "0.16.46"
   resolved "https://registry.yarnpkg.com/@types/material-ui/-/material-ui-0.16.46.tgz#7b7a64132cba9bdfa0aac0bd0c0dd70823c155da"
@@ -2259,6 +2263,10 @@ jodid25519@^1.0.0:
   resolved "https://registry.yarnpkg.com/jodid25519/-/jodid25519-1.0.2.tgz#06d4912255093419477d425633606e0e90782967"
   dependencies:
     jsbn "~0.1.0"
+
+jquery@^3.1.1:
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.1.1.tgz#347c1c21c7e004115e0a4da32cece041fad3c8a3"
 
 js-base64@^2.1.9:
   version "2.1.9"
