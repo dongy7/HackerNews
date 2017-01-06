@@ -1,9 +1,9 @@
 import * as React from 'react';
 import {connect} from 'react-redux';
 import NewsList from '../components/NewsList';
+import Spinner from '../components/Spinner';
 import {fetchNews} from '../actions/news';
 import {getNewsList, getIsFetching} from '../reducers';
-import CircularProgress from 'material-ui/CircularProgress';
 
 interface Props {
   isFetching: boolean;
@@ -20,12 +20,7 @@ class NewsFeedWrapper extends React.Component<Props, null> {
     const { isFetching, news } = this.props;
     if (isFetching && !news.length) {
       return (
-        <div className="container" style={{ marginTop: '50px' }}>
-          <CircularProgress
-            size={80}
-            thickness={5}
-          />
-        </div>
+        <Spinner />
       );
     }
 
