@@ -8,16 +8,20 @@ interface Props {
 
 class News extends React.Component<Props, null> {
   render() {
+    const cardStyle = {
+      margin: '15px',
+    };
+
     return (
       <div>
-        <Card>
+        <Card style={cardStyle}>
           <CardTitle
             title={this.props.story.title}
             subtitle={`${ this.props.story.points } points by ${ this.props.story.user }`}
           />
         </Card>
         <br/>
-        <Card>
+        <Card style={cardStyle}>
           <CardTitle
             title="Comments"
           />
