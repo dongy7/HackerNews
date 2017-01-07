@@ -8,7 +8,7 @@ export const toggle = () => ({
 
 export const change = open => ({
   type: CHANGE_NAV,
-  open,
+  payload: open,
 });
 
 export const close = () => ({

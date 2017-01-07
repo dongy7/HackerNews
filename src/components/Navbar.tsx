@@ -36,12 +36,13 @@ class Navbar extends React.Component<Props, null> {
       <div>
         <AppBar
           title="Hacker News"
+          onLeftIconButtonTouchTap={() => this.props.onToggle()}
         />
         <Drawer
           docked={false}
           width={200}
           open={this.props.open}
-          onRequestChange={(open) => this.props.onChange(open)}
+          onRequestChange={(open, reason) => this.props.onChange(open)}
         >
           {menuItems.map(menu => {
             return (
