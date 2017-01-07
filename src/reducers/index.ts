@@ -1,6 +1,7 @@
 import {combineReducers} from 'redux';
 import {FETCH_NEWS, FETCH_NEWS_FULFILLED} from '../actions/news';
 import {FETCH_STORY, FETCH_STORY_FULFILLED} from '../actions/story';
+import {CHANGE_NAV, CLOSE_NAV, TOGGLE_NAV} from '../actions/nav';
 
 const createRootReducer = () => {
   const news = (state: Story[] = [], action: Action<Payload>) => {
@@ -38,10 +39,24 @@ const createRootReducer = () => {
     }
   };
 
+  const nav = (state: boolean = false, action: Action<Payload>) => {
+    switch (action.type) {
+      case CHANGE_NAV:
+        return action.payload;
+      case CLOSE_NAV:
+        return false;
+      case TOGGLE_NAV:
+        return !state;
+      default:
+        return state;
+    }
+  };
+
   return combineReducers({
     news,
     isFetching,
     story,
+    nav,
   });
 };
 
@@ -57,4 +72,8 @@ export const getIsFetching = (state: State) => {
 
 export const getStory = (state: State) => {
   return state.story;
+};
+
+export const getNavStatus = (state: State) => {
+  return state.nav;
 };

@@ -41,7 +41,7 @@ class Navbar extends React.Component<Props, null> {
           docked={false}
           width={200}
           open={this.props.open}
-          onRequestChange={() => this.props.onChange()}
+          onRequestChange={(open) => this.props.onChange(open)}
         >
           {menuItems.map(menu => {
             return (

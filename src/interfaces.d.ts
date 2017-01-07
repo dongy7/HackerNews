@@ -22,7 +22,7 @@ interface Story {
   comments_count: number;
 }
 
-type Payload = string|Story|Story[]
+type Payload = string|Story|Story[]|boolean
 
 interface Action<Payload> {
   type: string;
@@ -38,6 +38,7 @@ interface State {
   news: Story[];
   isFetching: boolean;
   story: Story;
+  nav: boolean;
 }
 
 interface StoryRouteParam {
