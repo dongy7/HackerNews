@@ -2,6 +2,8 @@
 
 > Unofficial [Hacker News](https://news.ycombinator.com/) client.
 
+[![Build Status](https://travis-ci.org/dongy7/HackerNews.svg?branch=master)](https://travis-ci.org/dongy7/HackerNews)
+
 ![](media/screenshot.png)
 
 ![](media/screenshot-story.png)
