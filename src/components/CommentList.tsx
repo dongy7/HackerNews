@@ -1,4 +1,5 @@
 import * as React from 'react';
+import * as marked from 'marked';
 import {CardText} from 'material-ui/Card';
 import Divder from 'material-ui/Divider';
 
@@ -29,7 +30,7 @@ class CommentList extends React.Component<Props, null> {
           return (
             <div key={comment.id}>
               <CardText>
-                {comment.content}
+                <p dangerouslySetInnerHTML={{__html: marked(comment.content)}} />
                 <br />
                 {<b>{comment.user}</b>}
               </CardText>
