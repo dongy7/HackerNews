@@ -37,7 +37,6 @@ type StoryFetchRequestAction = Action<string>
 interface State {
   news: Story[];
   isFetching: boolean;
-  comments: CommentItem[];
   story: Story;
 }
 

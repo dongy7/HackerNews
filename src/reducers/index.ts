@@ -1,6 +1,5 @@
 import {combineReducers} from 'redux';
 import {FETCH_NEWS, FETCH_NEWS_FULFILLED} from '../actions/news';
-import {FETCH_COMMENTS, FETCH_COMMENTS_FULFILLED} from '../actions/comments';
 import {FETCH_STORY, FETCH_STORY_FULFILLED} from '../actions/story';
 
 const createRootReducer = () => {
@@ -9,17 +8,6 @@ const createRootReducer = () => {
       case FETCH_NEWS:
         return state;
       case FETCH_NEWS_FULFILLED:
-        return action.payload;
-      default:
-        return state;
-    }
-  };
-
-  const comments = (state: CommentItem[] = [], action: Action<Payload>) => {
-    switch (action.type) {
-      case FETCH_COMMENTS:
-        return state;
-      case FETCH_COMMENTS_FULFILLED:
         return action.payload;
       default:
         return state;
@@ -40,11 +28,9 @@ const createRootReducer = () => {
   const isFetching = (state: boolean = false, action: Action<Payload>) => {
     switch (action.type) {
       case FETCH_NEWS:
-      case FETCH_COMMENTS:
       case FETCH_STORY:
         return true;
       case FETCH_NEWS_FULFILLED:
-      case FETCH_COMMENTS_FULFILLED:
       case FETCH_STORY_FULFILLED:
         return false;
       default:
@@ -53,7 +39,6 @@ const createRootReducer = () => {
   };
 
   return combineReducers({
-    comments,
     news,
     isFetching,
     story,
@@ -68,10 +53,6 @@ export const getNewsList = (state: State) => {
 
 export const getIsFetching = (state: State) => {
   return state.isFetching;
-};
-
-export const getComments = (state: State) => {
-  return state.comments;
 };
 
 export const getStory = (state: State) => {

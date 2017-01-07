@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import Spinner from '../components/Spinner';
 import News from '../components/News';
 import {fetchStory} from '../actions/story';
-import {getComments, getStory, getIsFetching} from '../reducers';
+import {getStory, getIsFetching} from '../reducers';
 
 interface Props {
   isFetching: boolean;
@@ -29,7 +29,6 @@ class NewsWrapper extends React.Component<Props, null> {
 }
 
 const mapStateToProps = (state: State) => ({
-  comments: getComments(state),
   story: getStory(state),
   isFetching: getIsFetching(state),
 });
