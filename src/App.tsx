@@ -13,7 +13,7 @@ const muiTheme = getMuiTheme({
   },
 });
 
-const App = (props: { children: any }) => (
+const App = (props: { children: any }) => ( // tslint:disable-line
   <MuiThemeProvider muiTheme={muiTheme}>
     <div className="App">
       <Navigation />

@@ -53,7 +53,7 @@ class Navbar extends React.Component<Props, null> {
               >
                 {menu.text}
               </MenuItem>
-            )
+            );
           })}
         </Drawer>
       </div>
