@@ -14,7 +14,7 @@ const createRootReducer = () => {
     }
   };
 
-  const comments = (state: CommentItem[], action: Action<Payload>) => {
+  const comments = (state: CommentItem[] = [], action: Action<Payload>) => {
     switch (action.type) {
       case FETCH_COMMENTS:
         return state;

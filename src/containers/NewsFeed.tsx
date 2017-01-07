@@ -1,5 +1,7 @@
 import * as React from 'react';
 import {connect} from 'react-redux';
+import {withRouter} from 'react-router';
+import {InjectedRouter} from '@types/react-router';
 import NewsList from '../components/NewsList';
 import Spinner from '../components/Spinner';
 import {fetchNews} from '../actions/news';
@@ -9,6 +11,7 @@ interface Props {
   isFetching: boolean;
   news: Story[];
   fetch: Function;
+  router: InjectedRouter;
 }
 
 class NewsFeedWrapper extends React.Component<Props, null> {
@@ -25,7 +28,12 @@ class NewsFeedWrapper extends React.Component<Props, null> {
     }
 
     return (
-      <NewsList news={news} />
+      <NewsList
+        news={news}
+        onClick={(id) => {
+          this.props.router.push(`/story/${id}`);
+        }}
+      />
     );
   }
 }
@@ -41,6 +49,6 @@ const mapDispatchToProps = (dispatch: Function) => ({
   },
 });
 
-const NewsFeed = connect(mapStateToProps, mapDispatchToProps)(NewsFeedWrapper);
+const NewsFeed = withRouter(connect(mapStateToProps, mapDispatchToProps)(NewsFeedWrapper));
 
 export default NewsFeed;

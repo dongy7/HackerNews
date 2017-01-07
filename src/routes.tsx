@@ -1,7 +1,13 @@
 import * as React from 'react';
-import { Route } from 'react-router';
+import { Route, IndexRedirect } from 'react-router';
 import App from './App';
+import NewsFeed from './containers/NewsFeed';
+import Story from './containers/Story';
 
 export default (
-  <Route path="/(:newsId)" component={App} />
+  <Route path="/" component={App}>
+    <IndexRedirect to="/feed" />
+    <Route path="feed" component={NewsFeed} />
+    <Route path="story/(:id)" component={Story} />
+  </Route>
 );
