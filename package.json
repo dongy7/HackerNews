@@ -1,7 +1,8 @@
 {
-  "name": "hacker news",
+  "name": "hacker-news",
   "version": "0.1.0",
   "private": true,
+  "description": "Unofficial Hacker News Client",
   "devDependencies": {
     "react-scripts-ts": "1.0.4"
   },
