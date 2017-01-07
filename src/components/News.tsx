@@ -16,7 +16,7 @@ class News extends React.Component<Props, null> {
       <div>
         <Card style={cardStyle}>
           <CardTitle
-            title={this.props.story.title}
+            title={<a href={this.props.story.url}>{this.props.story.title}</a>}
             subtitle={`${ this.props.story.points } points by ${ this.props.story.user }`}
           />
         </Card>
