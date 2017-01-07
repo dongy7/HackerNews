@@ -6,13 +6,28 @@ interface Props {
   comments: CommentItem[];
 };
 
+const flatten = (commentItems: CommentItem[], thread: CommentItem[]) => {
+  commentItems.forEach(commentItem => {
+    const { comments, ...comment } = commentItem;
+    thread.push(comment);
+    flatten(comments || [], thread);
+  });
+};
+
+export const getCommentThread = (comments: CommentItem[]): CommentItem[] => {
+  const thread: CommentItem[] = [];
+  flatten(comments, thread);
+
+  return thread;
+};
+
 class CommentList extends React.Component<Props, null> {
   render() {
     return (
       <div>
-        {this.props.comments.map(comment => {
+        {getCommentThread(this.props.comments).map(comment => {
           return (
-            <div>
+            <div key={comment.id}>
               <CardText>
                 {comment.content}
                 <br />

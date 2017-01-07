@@ -1,7 +1,7 @@
 import {combineEpics} from 'redux-observable';
 import {fetchNewsEpic} from './fetchNewsEpic';
-import {fetchCommentEpic} from './fetchCommentEpic';
+import {fetchStoryEpic} from './fetchStoryEpic';
 
-const rootEpic = combineEpics(fetchNewsEpic, fetchCommentEpic);
+const rootEpic = combineEpics(fetchNewsEpic, fetchStoryEpic);
 
 export default rootEpic;

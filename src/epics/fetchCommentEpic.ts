@@ -6,20 +6,9 @@ import {itemUrl} from '../api';
 export const fetchCommentEpic = (action$: ActionsObservable<Action<Payload>>) =>
   action$.ofType(FETCH_COMMENTS)
     .flatMap((action: CommentFetchRequestAction) =>
-      Rx.Observable.ajax(`${itemUrl}/${action.payload}.json`)
+      Rx.Observable.ajax(`${itemUrl}/${action.payload}`)
         .flatMap(res => Rx.Observable.of(res.response))
-        .concatMap((res: Story) => Rx.Observable.from(res.kids))
-        .concatMap(commentId => Rx.Observable.ajax(`${itemUrl}/${commentId}.json`))
-        .map(res => res.response)
-        .scan(
-          (acc: CommentItem[], curr) => {
-            acc.push(curr);
-            return acc;
-          },
-          []
-        )
+        .map((res: Story) => res.comments)
         .takeLast(1)
-        .map(res => {
-          return fetchCommentsFulfilled(res);
-        })
+        .map(res => fetchCommentsFulfilled(res))
     );

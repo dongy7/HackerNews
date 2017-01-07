@@ -5,7 +5,7 @@ interface CommentItem {
   time: number;
   time_ago: string;
   content: string;
-  comments: CommentItem[];
+  comments?: CommentItem[];
 }
 
 interface Story {
@@ -22,8 +22,7 @@ interface Story {
   comments_count: number;
 }
 
-
-type Payload = string|Story[]|CommentItem[]
+type Payload = string|Story|Story[]
 
 interface Action<Payload> {
   type: string;
@@ -33,11 +32,13 @@ interface Action<Payload> {
 type NewsFetchRequestAction = Action<string>
 type NewsFetchFulfilledAction = Action<Story[]>
 type CommentFetchRequestAction = Action<string>
+type StoryFetchRequestAction = Action<string>
 
 interface State {
   news: Story[];
   isFetching: boolean;
   comments: CommentItem[];
+  story: Story;
 }
 
 interface StoryRouteParam {
