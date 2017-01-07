@@ -6,8 +6,8 @@ import Story from './containers/Story';
 
 export default (
   <Route path="/" component={App}>
-    <IndexRedirect to="/feed" />
-    <Route path="feed" component={NewsFeed} />
+    <IndexRedirect to="feed/" />
+    <Route path="feed(/:type)" component={NewsFeed} />
     <Route path="story/(:id)" component={Story} />
   </Route>
 );

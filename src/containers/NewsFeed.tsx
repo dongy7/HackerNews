@@ -12,11 +12,12 @@ interface Props {
   news: Story[];
   fetch: Function;
   router: InjectedRouter;
+  params: FeedRouteParam;
 }
 
 class NewsFeedWrapper extends React.Component<Props, null> {
   componentDidMount() {
-    this.props.fetch('topstories');
+    this.props.fetch(this.props.params.type || 'topstories');
   }
 
   render() {

@@ -44,3 +44,7 @@ interface State {
 interface StoryRouteParam {
   id: string;
 }
+
+interface FeedRouteParam {
+  type: string;
+}
