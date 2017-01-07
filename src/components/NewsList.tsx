@@ -9,7 +9,9 @@ const NewsList = (props: { news: Story[], onClick: Function }) => {
           <ListItem
             key={story.id}
             primaryText={story.title}
-            secondaryText={`${ story.points } points by ${ story.user } | ${ story.comments_count } comments`}
+            secondaryText={
+              `${ story.points } points by ${ story.user } ${story.time_ago} | ${ story.comments_count } comments
+              `}
             onClick={() => props.onClick(story.id)}
           />
         );

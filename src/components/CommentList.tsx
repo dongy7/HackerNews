@@ -35,7 +35,8 @@ class CommentList extends React.Component<Props, null> {
               <CardText>
                 <p dangerouslySetInnerHTML={{__html: marked(comment.content)}} />
                 <br />
-                {<b>{comment.user}</b>}
+                {<b>{`${comment.user}`}</b>}
+                {` ${comment.time_ago}`}
               </CardText>
               <Divder/>
             </div>
