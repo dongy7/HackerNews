@@ -14,9 +14,9 @@ class CommentList extends React.Component<Props, null> {
           return (
             <div>
               <CardText>
-                {comment.text}
+                {comment.content}
                 <br />
-                {<b>{comment.by}</b>}
+                {<b>{comment.user}</b>}
               </CardText>
               <Divder/>
             </div>

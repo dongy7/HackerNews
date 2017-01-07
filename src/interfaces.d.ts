@@ -1,24 +1,27 @@
-interface Story {
-  by: string;
-  descendants: number;
+interface CommentItem {
   id: number;
-  kids: number[];
-  score: number;
+  level: number;
+  user: string;
   time: number;
-  title: string;
-  type: string;
-  url: string;
+  time_ago: string;
+  content: string;
+  comments: CommentItem[];
 }
 
-interface CommentItem {
-  by: string;
+interface Story {
   id: number;
-  kids: number[];
-  parent: number;
-  text: string;
+  title: string;
+  points: number;
+  user: string;
   time: number;
+  time_ago: string;
   type: string;
+  url: string;
+  domain: string;
+  comments: CommentItem[];
+  comments_count: number;
 }
+
 
 type Payload = string|Story[]|CommentItem[]
 

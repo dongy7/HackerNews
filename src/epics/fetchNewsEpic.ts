@@ -13,7 +13,7 @@ export const fetchNewsEpic = (action$: ActionsObservable<Action<Payload>>) =>
       Rx.Observable.ajax(`${baseUrl}/${action.payload}.json`)
         .concatMap(res => Rx.Observable.from(res.response))
         .take(10)
-        .concatMap(id => Rx.Observable.ajax(`${itemUrl}/${id}.json`))
+        .concatMap(id => Rx.Observable.ajax(`${itemUrl}/${id}`))
         .map(res => res.response)
         .scan
         (
