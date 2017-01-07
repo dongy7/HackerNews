@@ -28,7 +28,10 @@ class CommentList extends React.Component<Props, null> {
       <div>
         {getCommentThread(this.props.comments).map(comment => {
           return (
-            <div key={comment.id}>
+            <div
+              key={comment.id}
+              style={{ marginLeft: `${comment.level * 20}px` }}
+            >
               <CardText>
                 <p dangerouslySetInnerHTML={{__html: marked(comment.content)}} />
                 <br />
