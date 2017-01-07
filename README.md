@@ -1,4 +1,4 @@
-# Hacker News
+# [Hacker News](https://hnews-client.herokuapp.com/)
 
 > Unofficial [Hacker News](https://news.ycombinator.com/) client.
 
@@ -27,5 +27,3 @@ This app was built was built with the following:
 - Test: `$ npm test`
 
 - Build: `$ npm run build`
-
-- Deploy: `$ npm run deploy`
