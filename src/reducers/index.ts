@@ -28,8 +28,10 @@ const createRootReducer = () => {
   const isFetching = (state: boolean = false, action: Action<Payload>) => {
     switch (action.type) {
       case FETCH_NEWS:
+      case FETCH_COMMENTS:
         return true;
       case FETCH_NEWS_FULFILLED:
+      case FETCH_COMMENTS_FULFILLED:
         return false;
       default:
         return state;

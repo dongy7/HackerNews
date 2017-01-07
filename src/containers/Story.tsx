@@ -9,13 +9,13 @@ interface Props {
   isFetching: boolean;
   comments: CommentItem[];
   fetch: Function;
-  id: string;
+  params: StoryRouteParam;
 }
 
 class CommentWrapper extends React.Component<Props, null> {
   componentDidMount() {
-    const { fetch, id } = this.props;
-    fetch(id);
+    const { fetch, params } = this.props;
+    fetch(params.id);
   }
 
   render() {

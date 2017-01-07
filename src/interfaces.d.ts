@@ -36,3 +36,7 @@ interface State {
   isFetching: boolean;
   comments: CommentItem[];
 }
+
+interface StoryRouteParam {
+  id: string;
+}

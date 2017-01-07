@@ -7,9 +7,10 @@ export const fetchCommentEpic = (action$: ActionsObservable<Action<Payload>>) =>
   action$.ofType(FETCH_COMMENTS)
     .flatMap((action: CommentFetchRequestAction) =>
       Rx.Observable.ajax(`${itemUrl}/${action.payload}.json`)
-        .flatMap(res => Rx.Observable.from(res.response))
-        .map((res: Story) => res.kids)
+        .flatMap(res => Rx.Observable.of(res.response))
+        .concatMap((res: Story) => Rx.Observable.from(res.kids))
         .concatMap(commentId => Rx.Observable.ajax(`${itemUrl}/${commentId}.json`))
+        .map(res => res.response)
         .scan(
           (acc: CommentItem[], curr) => {
             acc.push(curr);
@@ -18,5 +19,7 @@ export const fetchCommentEpic = (action$: ActionsObservable<Action<Payload>>) =>
           []
         )
         .takeLast(1)
-        .map(res => fetchCommentsFulfilled(res))
+        .map(res => {
+          return fetchCommentsFulfilled(res);
+        })
     );
