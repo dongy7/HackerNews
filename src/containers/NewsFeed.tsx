@@ -16,13 +16,23 @@ interface Props {
 }
 
 class NewsFeedWrapper extends React.Component<Props, null> {
-  componentDidMount() {
+  fetchStories() {
     this.props.fetch(this.props.params.type || 'topstories');
+  }
+
+  componentDidMount() {
+    this.fetchStories();
+  }
+
+  componentDidUpdate(prevProps: Props) {
+    if (this.props.params.type !== prevProps.params.type) {
+      this.fetchStories();
+    }
   }
 
   render() {
     const { isFetching, news } = this.props;
-    if (isFetching && !news.length) {
+    if (isFetching) {
       return (
         <Spinner />
       );
