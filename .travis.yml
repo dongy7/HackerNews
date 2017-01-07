@@ -1,0 +1,11 @@
+language: node_js
+node_js:
+  - "6"
+
+cache:
+  yarn: true
+
+deploy:
+  provider: heroku
+  api_key: ${DEPLOY_KEY}
+  app: hnews-client
