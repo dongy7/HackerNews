@@ -6,8 +6,8 @@ import {itemUrl} from '../api';
 export const fetchStoryEpic = (action$: ActionsObservable<Action<Payload>>) =>
   action$.ofType(FETCH_STORY)
     .flatMap((action: StoryFetchRequestAction) =>
-      Rx.Observable.ajax(`${itemUrl}/${action.payload}`)
-        .flatMap(res => Rx.Observable.of(res.response))
+      Rx.Observable.fromPromise(fetch(`${itemUrl}/${action.payload}`))
+        .flatMap(res => res.json())
         .takeLast(1)
         .map(res => fetchStoryFulfilled(res))
     );
