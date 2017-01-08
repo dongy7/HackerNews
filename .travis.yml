@@ -1,11 +1,12 @@
 language: node_js
 node_js:
-  - "6"
-
+- '6'
 cache:
   yarn: true
-
 deploy:
   provider: heroku
-  api_key: ${DEPLOY_KEY}
+  api_key:
+    secure: ZrMjJRZfjr1fXVTGEZdiXz/PkhqoSquXqWFCdSoHAkc7p/JaNo55eoVfAogYFP+Ft9iviSdO65/YdwKsGo4j7hkmFvSWcSmY7KFqnkVlZAl7p3u9gubF6+0iJw2uQ5deTq9X8Ivsd4m4j+HcF0My/lzb9+T9QgEL026UJPtzZBiJqv+zegy8D5ZdYgxixeIN/uJfOYwptkJfz7UFgCIrwehsDOHBx5dM08mlNGaQirfJTf9FSwU1/myzSayUTE9ASdrrUuGvhWrsUfv1rVxYCxaIgvIBUn6xoTxRXcQRyK+hwi40dU+tjAKbbTMB0zlpTT1jOLTz6tkGncbkS2srJ8fBPWnd21o1Xt1O3g3WPEXjTlQRRb+6qNrE+TDt/KXtNFwZYY4eGNSpfNy6pw/DAQP9vGZUhId6g1FjbgDvztqwj+gpf0IcVV5idCqeAIEhkPkYtw3krbzi/JrnXJFmWI3sVa8VJAsXy6xPQx3sEvdNcRW847MLNFgZTm228JrIiNZ0RHUn47i6/MYzKIaa7lBTWC0iCgTgPVah0f71YNYqDWWLxCIWB6WuN6IMjKlqC7TKNaixc342hjtagVdgV2Mi3gViuq1foNEWsQSPC4mVZfGOIgNqPQ/fTH6/T573/I54F9sSW+hOBcmcU2m9U/K2QYnqKOIEQh44xh0qWjo=
   app: hnews-client
+  on:
+    repo: dongy7/HackerNews
