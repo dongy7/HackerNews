@@ -23,22 +23,26 @@ interface Story {
 }
 
 type Payload = string|Story|Story[]|boolean
+type MetaData = number|null|undefined
 
-interface Action<Payload> {
+interface Action<Payload, MetaData> {
   type: string;
   payload: Payload;
+  metadata?: MetaData;
 }
 
-type NewsFetchRequestAction = Action<string>
-type NewsFetchFulfilledAction = Action<Story[]>
-type CommentFetchRequestAction = Action<string>
-type StoryFetchRequestAction = Action<string>
+type NewsFetchRequestAction = Action<string, number>
+type NewsFetchFulfilledAction = Action<Story[], null>
+type CommentFetchRequestAction = Action<string, null>
+type StoryFetchRequestAction = Action<string, null>
 
 interface State {
   news: Story[];
   isFetching: boolean;
   story: Story;
   nav: boolean;
+  newPage: number;
+  topPage: number;
 }
 
 interface StoryRouteParam {
@@ -47,4 +51,5 @@ interface StoryRouteParam {
 
 interface FeedRouteParam {
   type: string;
+  page: string;
 }

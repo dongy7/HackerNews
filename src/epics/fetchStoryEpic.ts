@@ -3,7 +3,7 @@ import {ActionsObservable} from 'redux-observable';
 import {FETCH_STORY, fetchStoryFulfilled} from '../actions/story';
 import {itemUrl} from '../api';
 
-export const fetchStoryEpic = (action$: ActionsObservable<Action<Payload>>) =>
+export const fetchStoryEpic = (action$: ActionsObservable<Action<Payload, MetaData>>) =>
   action$.ofType(FETCH_STORY)
     .flatMap((action: StoryFetchRequestAction) =>
       Rx.Observable.fromPromise(fetch(`${itemUrl}/${action.payload}`))

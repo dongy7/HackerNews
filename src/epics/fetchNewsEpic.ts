@@ -7,11 +7,12 @@ import {baseUrl, itemUrl} from '../api';
  * Fetches the first n articles
  * concatMap used to order the requests
  */
-export const fetchNewsEpic = (action$: ActionsObservable<Action<Payload>>) =>
+export const fetchNewsEpic = (action$: ActionsObservable<Action<Payload, MetaData>>) =>
   action$.ofType(FETCH_NEWS)
     .flatMap((action: NewsFetchRequestAction) =>
       Rx.Observable.ajax(`${baseUrl}/${action.payload}.json`)
         .concatMap(res => Rx.Observable.from(res.response))
+        .skip(10 * (action.metadata - 1))
         .take(10)
         .concatMap(id => Rx.Observable.ajax(`${itemUrl}/${id}`))
         .map(res => res.response)

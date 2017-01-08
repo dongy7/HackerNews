@@ -17,7 +17,9 @@ interface Props {
 
 class NewsFeedWrapper extends React.Component<Props, null> {
   fetchStories() {
-    this.props.fetch(this.props.params.type || 'topstories');
+    const type = this.props.params.type || 'topstories';
+    const page = parseInt(this.props.params.page, 10) || 1;
+    this.props.fetch(type, page);
   }
 
   componentDidMount() {
@@ -55,8 +57,8 @@ const mapStateToProps = (state: State) => ({
 });
 
 const mapDispatchToProps = (dispatch: Function) => ({
-  fetch: (type: string) => {
-    dispatch(fetchNews(type));
+  fetch: (type: string, page: number) => {
+    dispatch(fetchNews(type, page));
   },
 });
 
