@@ -4,10 +4,15 @@ import {List, ListItem} from 'material-ui/List';
 import {Grid, Row, Col} from 'react-bootstrap';
 import PageNavbar from './PageNavbar';
 
-const NewsList = (props: { news: Story[], page: number, onClick: Function }) => {
+const NewsList = (
+  props: { news: Story[], page: number, onClick: Function, onLeftNav: Function, onRightNav: Function }) => {
   return (
     <div>
-      <PageNavbar page={props.page}/>
+      <PageNavbar
+        page={props.page}
+        onLeftClick={props.onLeftNav}
+        onRightClick={props.onRightNav}
+      />
       <Grid>
         <Row>
           <Col xs={2} md={3} />

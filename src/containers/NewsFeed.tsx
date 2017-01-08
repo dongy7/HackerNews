@@ -21,9 +21,14 @@ class NewsFeedWrapper extends React.Component<Props, null> {
     return page;
   }
 
-  fetchStories() {
+  getType() {
     const type = this.props.params.type || 'topstories';
+    return type;
+  }
+
+  fetchStories() {
     const page = this.getPage();
+    const type = this.getType();
     this.props.fetch(type, page);
   }
 
@@ -51,6 +56,16 @@ class NewsFeedWrapper extends React.Component<Props, null> {
         page={this.getPage()}
         onClick={(id) => {
           this.props.router.push(`/story/${id}`);
+        }}
+        onLeftNav={() => {
+          this.props.router.push(
+            `/feed/${this.getType()}/${this.getPage() - 1}`
+          );
+        }}
+        onRightNav={() => {
+          this.props.router.push(
+            `/feed/${this.getType()}/${this.getPage() + 1}`
+          );
         }}
       />
     );
