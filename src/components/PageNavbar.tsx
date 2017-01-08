@@ -2,6 +2,7 @@ import * as React from 'react';
 import {Toolbar, ToolbarGroup} from 'material-ui/Toolbar';
 import ChevronLeft from 'material-ui/svg-icons/navigation/chevron-left';
 import ChevronRight from 'material-ui/svg-icons/navigation/chevron-right';
+import IconButton from 'material-ui/IconButton';
 
 const PageNavbar = (props: { page: number }) => {
   const leftDisabled = props.page === 1;
@@ -10,13 +11,17 @@ const PageNavbar = (props: { page: number }) => {
     <div>
       <Toolbar>
         <ToolbarGroup firstChild>
-          <ChevronLeft disabled={leftDisabled}/>
+          <IconButton disabled={leftDisabled}>
+            <ChevronLeft />
+          </IconButton>
         </ToolbarGroup>
         <ToolbarGroup>
           {<b>{props.page}/50</b>}
         </ToolbarGroup>
         <ToolbarGroup lastChild>
-          <ChevronRight disabled={rightDisabled}/>
+          <IconButton disabled={rightDisabled}>
+            <ChevronRight/>
+          </IconButton>
         </ToolbarGroup>
       </Toolbar>
     </div>
