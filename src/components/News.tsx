@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {Card, CardTitle, CardText} from 'material-ui/Card';
+import Divder from 'material-ui/Divider';
 import CommentList from './CommentList';
 
 interface Props {
@@ -25,6 +26,7 @@ class News extends React.Component<Props, null> {
           <CardTitle
             title="Comments"
           />
+          <Divder />
           <CardText>
             <CommentList
               comments={this.props.story.comments}
