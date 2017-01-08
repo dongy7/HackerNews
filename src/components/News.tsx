@@ -21,10 +21,9 @@ class News extends React.Component<Props, null> {
             subtitle={`${ this.props.story.points } points by ${ this.props.story.user }`}
           />
         </Card>
-        <br/>
         <Card style={cardStyle}>
           <CardTitle
-            title="Comments"
+            title={`${this.props.story.comments_count} Comments`}
           />
           <Divder />
           <CardText>
