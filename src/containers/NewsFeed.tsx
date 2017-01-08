@@ -16,9 +16,14 @@ interface Props {
 }
 
 class NewsFeedWrapper extends React.Component<Props, null> {
+  getPage() {
+    const page = parseInt(this.props.params.page, 10) || 1;
+    return page;
+  }
+
   fetchStories() {
     const type = this.props.params.type || 'topstories';
-    const page = parseInt(this.props.params.page, 10) || 1;
+    const page = this.getPage();
     this.props.fetch(type, page);
   }
 
@@ -43,6 +48,7 @@ class NewsFeedWrapper extends React.Component<Props, null> {
     return (
       <NewsList
         news={news}
+        page={this.getPage()}
         onClick={(id) => {
           this.props.router.push(`/story/${id}`);
         }}
