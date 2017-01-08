@@ -37,7 +37,8 @@ class NewsFeedWrapper extends React.Component<Props, null> {
   }
 
   componentDidUpdate(prevProps: Props) {
-    if (this.props.params.type !== prevProps.params.type) {
+    const {params} = this.props;
+    if (params.type !== prevProps.params.type || params.page !== prevProps.params.page) {
       this.fetchStories();
     }
   }
