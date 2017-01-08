@@ -4,17 +4,19 @@ import ChevronLeft from 'material-ui/svg-icons/navigation/chevron-left';
 import ChevronRight from 'material-ui/svg-icons/navigation/chevron-right';
 
 const PageNavbar = (props: { page: number }) => {
+  const leftDisabled = props.page === 1;
+  const rightDisabled = props.page === 50;
   return (
     <div>
       <Toolbar>
         <ToolbarGroup firstChild>
-          <ChevronLeft />
+          <ChevronLeft disabled={leftDisabled}/>
         </ToolbarGroup>
         <ToolbarGroup>
           {<b>{props.page}/50</b>}
         </ToolbarGroup>
         <ToolbarGroup lastChild>
-          <ChevronRight />
+          <ChevronRight disabled={rightDisabled}/>
         </ToolbarGroup>
       </Toolbar>
     </div>
