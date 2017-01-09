@@ -1,6 +1,6 @@
 import {combineReducers} from 'redux';
 import {FETCH_NEWS, FETCH_NEWS_FULFILLED, FETCH_NEWS_REJECTED, FETCH_PAGE_COUNT_FULFILLED} from '../actions/news';
-import {FETCH_STORY, FETCH_STORY_FULFILLED} from '../actions/story';
+import {FETCH_STORY, FETCH_STORY_REJECTED, FETCH_STORY_FULFILLED} from '../actions/story';
 import {CHANGE_NAV, CLOSE_NAV, TOGGLE_NAV} from '../actions/nav';
 import {CLOSE_DIALOG} from '../actions/dialog';
 
@@ -113,6 +113,7 @@ const createRootReducer = () => {
   const error = (state: boolean = false, action: Action<Payload, MetaData>) => {
     switch (action.type) {
       case FETCH_NEWS_REJECTED:
+      case FETCH_STORY_REJECTED:
         return true;
       case CLOSE_DIALOG:
         return false;
@@ -124,6 +125,7 @@ const createRootReducer = () => {
   const msg = (state: string = '', action: Action<Payload, MetaData>) => {
     switch (action.type) {
       case FETCH_NEWS_REJECTED:
+      case FETCH_STORY_REJECTED:
         return action.payload;
       default:
         return state;

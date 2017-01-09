@@ -28,8 +28,10 @@ export const fetchNewsEpic = (action$: ActionsObservable<Action<Payload, MetaDat
         .takeLast(1)
         .map(res => fetchNewsFulfilled(res, action.payload, action.metadata || 1)) // TODO: avoid short circuit
         .takeUntil(action$.ofType(CHANGE_PAGE))
-        .catch(err => Rx.Observable.of({
-          type: FETCH_NEWS_REJECTED,
-          payload: err.xhr.response,
-        }))
+        .catch(err => {
+          return Rx.Observable.of({
+            type: FETCH_NEWS_REJECTED,
+            payload: err.message,
+          });
+        })
     );
