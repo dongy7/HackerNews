@@ -1,4 +1,4 @@
-import * as actions from '../../src/actions/story';
+import * as actions from './story';
 
 describe('actions', () => {
   it('should create an action to fetch a story', () => {

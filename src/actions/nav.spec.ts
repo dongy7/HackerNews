@@ -1,4 +1,4 @@
-import * as actions from '../../src/actions/nav';
+import * as actions from './nav';
 
 describe('actions', () => {
   it('should create an action to toggle the nav', () => {

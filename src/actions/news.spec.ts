@@ -1,4 +1,4 @@
-import * as actions from '../../src/actions/news';
+import * as actions from './news';
 
 describe('actions', () => {
   it('should create an action to fetch a news page', () => {

@@ -1,4 +1,4 @@
-import * as actions from '../../src/actions/dialog';
+import * as actions from './dialog';
 
 describe('actions', () => {
   it('should create an action to close the dialog', () => {
