@@ -27,7 +27,6 @@ interface NewsCache {
 }
 
 interface Category {
-  type: string;
   pageAt: number;
   pageCount: number;
   cachedNews: NewsCache;
@@ -54,14 +53,18 @@ type CommentFetchRequestAction = Action<string, null>
 type StoryFetchRequestAction = Action<string, null>
 type PageCountFetchFulfilledAction = Action<number, string>
 
-interface State {
+interface Status {
   isFetching: boolean;
+  error: boolean;
+  msg: string;
+}
+
+interface State {
   story: Story;
   nav: boolean;
   newCategory: Category;
   topCategory: Category;
-  error: boolean;
-  msg: string;
+  status: Status;
 }
 
 interface StoryRouteParam {

@@ -17,7 +17,7 @@ const createRootReducer = () => {
 export default createRootReducer;
 
 export const getIsFetching = (state: State) => {
-  return state.isFetching;
+  return state.status.isFetching;
 };
 
 export const getStory = (state: State) => {
@@ -45,9 +45,9 @@ export const getCachedNewPage = (state: State, pageNumber: number) => {
 };
 
 export const getError = (state: State) => {
-  return state.error;
+  return state.status.error;
 };
 
 export const getErrMsg = (state: State) => {
-  return state.msg;
+  return state.status.msg;
 };
