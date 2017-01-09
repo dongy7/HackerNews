@@ -5,7 +5,7 @@ import {InjectedRouter} from '@types/react-router';
 import NewsList from '../components/NewsList';
 import Spinner from '../components/Spinner';
 import {fetchNews} from '../actions/news';
-import {getNewsList, getIsFetching} from '../reducers';
+import {getNewsList, getIsFetching, getTopPageCount, getNewPageCount} from '../reducers';
 
 interface Props {
   isFetching: boolean;
@@ -13,6 +13,8 @@ interface Props {
   fetch: Function;
   router: InjectedRouter;
   params: FeedRouteParam;
+  topPageCount: number;
+  newPageCount: number;
 }
 
 class NewsFeedWrapper extends React.Component<Props, null> {
@@ -24,6 +26,11 @@ class NewsFeedWrapper extends React.Component<Props, null> {
   getType() {
     const type = this.props.params.type || 'topstories';
     return type;
+  }
+
+  getPageCount() {
+    const itemCount = this.getType() === 'topstories' ? this.props.topPageCount : this.props.newPageCount;
+    return Math.floor(itemCount / 10);
   }
 
   fetchStories() {
@@ -55,6 +62,7 @@ class NewsFeedWrapper extends React.Component<Props, null> {
       <NewsList
         news={news}
         page={this.getPage()}
+        pageCount={this.getPageCount()}
         onClick={(id) => {
           this.props.router.push(`/story/${id}`);
         }}
@@ -76,6 +84,8 @@ class NewsFeedWrapper extends React.Component<Props, null> {
 const mapStateToProps = (state: State) => ({
   news: getNewsList(state),
   isFetching: getIsFetching(state),
+  topPageCount: getTopPageCount(state),
+  newPageCount: getNewPageCount(state),
 });
 
 const mapDispatchToProps = (dispatch: Function) => ({

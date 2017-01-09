@@ -22,6 +22,17 @@ interface Story {
   comments_count: number;
 }
 
+interface NewsCache {
+  [page: number]: Story[]
+}
+
+interface Category {
+  type: string;
+  pageAt: number;
+  pageCount: number;
+  cachedNews: NewsCache;
+}
+
 type Payload = string|Story|Story[]|boolean|number
 type MetaData = number|string|null|undefined
 
@@ -42,8 +53,8 @@ interface State {
   isFetching: boolean;
   story: Story;
   nav: boolean;
-  newPage: number;
-  topPage: number;
+  newCategory: Category;
+  topCategory: Category;
 }
 
 interface StoryRouteParam {

@@ -1,5 +1,5 @@
 import {combineReducers} from 'redux';
-import {FETCH_NEWS, FETCH_NEWS_FULFILLED} from '../actions/news';
+import {FETCH_NEWS, FETCH_NEWS_FULFILLED, FETCH_PAGE_COUNT_FULFILLED} from '../actions/news';
 import {FETCH_STORY, FETCH_STORY_FULFILLED} from '../actions/story';
 import {CHANGE_NAV, CLOSE_NAV, TOGGLE_NAV} from '../actions/nav';
 
@@ -52,15 +52,33 @@ const createRootReducer = () => {
     }
   };
 
-  const topPage = (state: number = 1, action: Action<Payload, MetaData>) => {
+  const topCategory = (state: Category = {
+    type: 'topstories', pageAt: 1, pageCount: 50, cachedNews: {}
+  }, action: Action<Payload, MetaData>) => {
     switch (action.type) {
+      case FETCH_PAGE_COUNT_FULFILLED:
+        if (action.metadata === state.type) {
+          return Object.assign({}, state, {
+            pageCount: action.payload,
+          });
+        }
+        return state;
       default:
         return state;
     }
   };
 
-  const newPage = (state: number = 1, action: Action<Payload, MetaData>) => {
+  const newCategory = (state: Category = {
+    type: 'newstories', pageAt: 1, pageCount: 50, cachedNews: {}
+  }, action: Action<Payload, MetaData>) => {
     switch (action.type) {
+      case FETCH_PAGE_COUNT_FULFILLED:
+        if (action.metadata === state.type) {
+          return Object.assign({}, state, {
+            pageCount: action.payload,
+          });
+        }
+        return state;
       default:
         return state;
     }
@@ -71,8 +89,8 @@ const createRootReducer = () => {
     isFetching,
     story,
     nav,
-    topPage,
-    newPage,
+    newCategory,
+    topCategory,
   });
 };
 
@@ -94,10 +112,10 @@ export const getNavStatus = (state: State) => {
   return state.nav;
 };
 
-export const getNewPage = (state: State) => {
-  return state.newPage;
+export const getTopPageCount = (state: State) => {
+  return state.topCategory.pageCount;
 };
 
-export const getTopPage = (state: State) => {
-  return state.topPage;
+export const getNewPageCount = (state: State) => {
+  return state.newCategory.pageCount;
 };

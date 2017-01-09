@@ -14,7 +14,8 @@
     "url": "https://github.com/dongy7/HackerNews"
   },
   "devDependencies": {
-    "react-scripts-ts": "1.0.4"
+    "react-scripts-ts": "1.0.4",
+    "redux-devtools-extension": "^1.0.0"
   },
   "dependencies": {
     "@types/jest": "^16.0.3",

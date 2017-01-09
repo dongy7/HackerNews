@@ -4,9 +4,12 @@ import ChevronLeft from 'material-ui/svg-icons/navigation/chevron-left';
 import ChevronRight from 'material-ui/svg-icons/navigation/chevron-right';
 import IconButton from 'material-ui/IconButton';
 
-const PageNavbar = (props: { page: number, onLeftClick: Function, onRightClick: Function }) => {
+const PageNavbar = (props: {
+  page: number, pageCount: number,
+  onLeftClick: Function, onRightClick: Function
+}) => {
   const leftDisabled = props.page === 1;
-  const rightDisabled = props.page === 50;
+  const rightDisabled = props.page === props.pageCount;
   return (
     <div>
       <Toolbar>
@@ -16,7 +19,7 @@ const PageNavbar = (props: { page: number, onLeftClick: Function, onRightClick: 
           </IconButton>
         </ToolbarGroup>
         <ToolbarGroup>
-          {<b>{props.page}/50</b>}
+          {<b>{props.page}/{props.pageCount}</b>}
         </ToolbarGroup>
         <ToolbarGroup lastChild>
           <IconButton disabled={rightDisabled} onClick={() => props.onRightClick()}>
