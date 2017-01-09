@@ -5,7 +5,7 @@ import {InjectedRouter} from '@types/react-router';
 import NewsList from '../components/NewsList';
 import Spinner from '../components/Spinner';
 import {fetchNews} from '../actions/news';
-import {getNewsList, getIsFetching, getTopPageCount, getNewPageCount} from '../reducers';
+import {getNewsList, getIsFetching, getTopPageCount, getNewPageCount, getCachedNewPage, getCachedTopPage} from '../reducers';
 
 interface Props {
   isFetching: boolean;
@@ -15,6 +15,8 @@ interface Props {
   params: FeedRouteParam;
   topPageCount: number;
   newPageCount: number;
+  getCachedTopPage: (id: number) => Story[];
+  getCachedNewPage: (id: number) => Story[];
 }
 
 class NewsFeedWrapper extends React.Component<Props, null> {
@@ -31,6 +33,12 @@ class NewsFeedWrapper extends React.Component<Props, null> {
   getPageCount() {
     const itemCount = this.getType() === 'topstories' ? this.props.topPageCount : this.props.newPageCount;
     return Math.floor(itemCount / 10);
+  }
+
+  fetchCachedStories() {
+    const pageNumber = this.getPage();
+    return this.getType() === 'topstories' ?
+      this.props.getCachedTopPage(pageNumber) : this.props.getCachedNewPage(pageNumber);
   }
 
   fetchStories() {
@@ -51,8 +59,9 @@ class NewsFeedWrapper extends React.Component<Props, null> {
   }
 
   render() {
-    const { isFetching, news } = this.props;
-    if (isFetching) {
+    const { isFetching } = this.props;
+    const cachedStories = this.fetchCachedStories();
+    if (isFetching && !cachedStories.length) {
       return (
         <Spinner />
       );
@@ -60,7 +69,7 @@ class NewsFeedWrapper extends React.Component<Props, null> {
 
     return (
       <NewsList
-        news={news}
+        news={cachedStories}
         page={this.getPage()}
         pageCount={this.getPageCount()}
         onClick={(id) => {
@@ -86,6 +95,8 @@ const mapStateToProps = (state: State) => ({
   isFetching: getIsFetching(state),
   topPageCount: getTopPageCount(state),
   newPageCount: getNewPageCount(state),
+  getCachedTopPage: (id: number) => getCachedTopPage(state, id),
+  getCachedNewPage: (id: number) => getCachedNewPage(state, id),
 });
 
 const mapDispatchToProps = (dispatch: Function) => ({
