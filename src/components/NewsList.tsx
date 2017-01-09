@@ -7,7 +7,8 @@ import PageNavbar from './PageNavbar';
 const NewsList = (
   props: {
     news: Story[], page: number, pageCount: number,
-    onClick: Function, onLeftNav: Function, onRightNav: Function
+    onClick: Function, onLeftNav: Function, onRightNav: Function,
+    onPageChange: Function,
   }) => {
     return (
       <div>
@@ -16,6 +17,7 @@ const NewsList = (
           pageCount={props.pageCount}
           onLeftClick={props.onLeftNav}
           onRightClick={props.onRightNav}
+          onPageChange={props.onPageChange}
         />
         <Grid>
           <Row>

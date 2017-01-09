@@ -6,7 +6,8 @@ import IconButton from 'material-ui/IconButton';
 
 const PageNavbar = (props: {
   page: number, pageCount: number,
-  onLeftClick: Function, onRightClick: Function
+  onLeftClick: Function, onRightClick: Function,
+  onPageChange: Function,
 }) => {
   const leftDisabled = props.page === 1;
   const rightDisabled = props.page === props.pageCount;
@@ -14,7 +15,13 @@ const PageNavbar = (props: {
     <div>
       <Toolbar>
         <ToolbarGroup firstChild>
-          <IconButton disabled={leftDisabled} onClick={() => props.onLeftClick()}>
+          <IconButton
+            disabled={leftDisabled}
+            onClick={() => {
+              props.onPageChange();
+              props.onLeftClick();
+            }}
+          >
             <ChevronLeft />
           </IconButton>
         </ToolbarGroup>
@@ -22,7 +29,13 @@ const PageNavbar = (props: {
           {<b>{props.page}/{props.pageCount}</b>}
         </ToolbarGroup>
         <ToolbarGroup lastChild>
-          <IconButton disabled={rightDisabled} onClick={() => props.onRightClick()}>
+          <IconButton
+            disabled={rightDisabled}
+            onClick={() => {
+              props.onPageChange();
+              props.onRightClick();
+            }}
+          >
             <ChevronRight/>
           </IconButton>
         </ToolbarGroup>

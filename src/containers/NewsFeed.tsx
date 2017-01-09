@@ -5,7 +5,12 @@ import {InjectedRouter} from '@types/react-router';
 import NewsList from '../components/NewsList';
 import Spinner from '../components/Spinner';
 import {fetchNews} from '../actions/news';
-import {getNewsList, getIsFetching, getTopPageCount, getNewPageCount, getCachedNewPage, getCachedTopPage} from '../reducers';
+import {changePage} from '../actions/nav';
+import {
+  getNewsList, getIsFetching,
+  getTopPageCount, getNewPageCount,
+  getCachedNewPage, getCachedTopPage
+} from '../reducers';
 
 interface Props {
   isFetching: boolean;
@@ -17,6 +22,7 @@ interface Props {
   newPageCount: number;
   getCachedTopPage: (id: number) => Story[];
   getCachedNewPage: (id: number) => Story[];
+  changePage: Function;
 }
 
 class NewsFeedWrapper extends React.Component<Props, null> {
@@ -72,6 +78,7 @@ class NewsFeedWrapper extends React.Component<Props, null> {
         news={cachedStories}
         page={this.getPage()}
         pageCount={this.getPageCount()}
+        onPageChange={this.props.changePage}
         onClick={(id) => {
           this.props.router.push(`/story/${id}`);
         }}
@@ -103,6 +110,9 @@ const mapDispatchToProps = (dispatch: Function) => ({
   fetch: (type: string, page: number) => {
     dispatch(fetchNews(type, page));
   },
+  changePage: () => {
+    dispatch(changePage());
+  }
 });
 
 const NewsFeed = withRouter(connect(mapStateToProps, mapDispatchToProps)(NewsFeedWrapper));
