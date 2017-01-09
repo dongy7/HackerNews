@@ -10,7 +10,6 @@ interface Props {
 
 class ErrorDialog extends React.Component<Props, null> {
   render() {
-    console.log(this.props);
     const actions = [(
       <FlatButton
         label="OK"
