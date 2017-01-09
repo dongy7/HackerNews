@@ -1,6 +1,8 @@
 export const FETCH_NEWS = 'FETCH_NEWS';
 export const FETCH_NEWS_FULFILLED = 'FETCH_NEWS_FULFILLED';
+export const FETCH_NEWS_REJECTED = 'FETCH_NEWS_REJECTED';
 export const FETCH_PAGE_COUNT_FULFILLED = 'FETCH_PAGE_COUNT_FULFILLED';
+export const FETCH_PAGE_COUNT_REJECTED = 'FETCH_PAGE_COUNT_REJECTED';
 
 export const fetchNews = (type: string, page: number): NewsFetchRequestAction => ({
   type: FETCH_NEWS,

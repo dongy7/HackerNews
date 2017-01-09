@@ -60,6 +60,8 @@ interface State {
   nav: boolean;
   newCategory: Category;
   topCategory: Category;
+  error: boolean;
+  msg: string;
 }
 
 interface StoryRouteParam {

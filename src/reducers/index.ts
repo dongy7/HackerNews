@@ -1,7 +1,8 @@
 import {combineReducers} from 'redux';
-import {FETCH_NEWS, FETCH_NEWS_FULFILLED, FETCH_PAGE_COUNT_FULFILLED} from '../actions/news';
+import {FETCH_NEWS, FETCH_NEWS_FULFILLED, FETCH_NEWS_REJECTED, FETCH_PAGE_COUNT_FULFILLED} from '../actions/news';
 import {FETCH_STORY, FETCH_STORY_FULFILLED} from '../actions/story';
 import {CHANGE_NAV, CLOSE_NAV, TOGGLE_NAV} from '../actions/nav';
+import {CLOSE_DIALOG} from '../actions/dialog';
 
 const createRootReducer = () => {
   const news = (state: Story[] = [], action: Action<Payload, MetaData>) => {
@@ -109,6 +110,26 @@ const createRootReducer = () => {
     }
   };
 
+  const error = (state: boolean = false, action: Action<Payload, MetaData>) => {
+    switch (action.type) {
+      case FETCH_NEWS_REJECTED:
+        return true;
+      case CLOSE_DIALOG:
+        return false;
+      default:
+        return state;
+    }
+  };
+
+  const msg = (state: string = '', action: Action<Payload, MetaData>) => {
+    switch (action.type) {
+      case FETCH_NEWS_REJECTED:
+        return action.payload;
+      default:
+        return state;
+    }
+  };
+
   return combineReducers({
     news,
     isFetching,
@@ -116,6 +137,8 @@ const createRootReducer = () => {
     nav,
     newCategory,
     topCategory,
+    error,
+    msg,
   });
 };
 
@@ -151,4 +174,12 @@ export const getCachedTopPage = (state: State, pageNumber: number) => {
 
 export const getCachedNewPage = (state: State, pageNumber: number) => {
   return state.newCategory.cachedNews[pageNumber] || [];
+};
+
+export const getError = (state: State) => {
+  return state.error;
+};
+
+export const getErrMsg = (state: State) => {
+  return state.msg;
 };

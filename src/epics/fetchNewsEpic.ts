@@ -1,6 +1,6 @@
 import * as Rx from 'rxjs';
 import {ActionsObservable} from 'redux-observable';
-import {FETCH_NEWS, fetchNewsFulfilled} from '../actions/news';
+import {FETCH_NEWS, FETCH_NEWS_REJECTED, fetchNewsFulfilled} from '../actions/news';
 import {CHANGE_PAGE} from '../actions/nav';
 import {baseUrl, itemUrl} from '../api';
 
@@ -28,4 +28,8 @@ export const fetchNewsEpic = (action$: ActionsObservable<Action<Payload, MetaDat
         .takeLast(1)
         .map(res => fetchNewsFulfilled(res, action.payload, action.metadata || 1)) // TODO: avoid short circuit
         .takeUntil(action$.ofType(CHANGE_PAGE))
+        .catch(err => Rx.Observable.of({
+          type: FETCH_NEWS_REJECTED,
+          payload: err.xhr.response,
+        }))
     );
