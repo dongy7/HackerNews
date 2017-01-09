@@ -5,13 +5,20 @@ body {
   background-color: #EEEEEE;
 }
 
-.container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.App {
+  height: 100%
 }
 
 a {
   color: #34495e;
   text-decoration: none;
+}
+
+.vertical-center {
+  min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+  min-height: 100vh; /* These two lines are counted as one :-)       */
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
