@@ -1,134 +1,16 @@
 import {combineReducers} from 'redux';
-import {FETCH_NEWS, FETCH_NEWS_FULFILLED, FETCH_NEWS_REJECTED, FETCH_PAGE_COUNT_FULFILLED} from '../actions/news';
-import {FETCH_STORY, FETCH_STORY_REJECTED, FETCH_STORY_FULFILLED} from '../actions/story';
-import {CHANGE_NAV, CLOSE_NAV, TOGGLE_NAV} from '../actions/nav';
-import {CLOSE_DIALOG} from '../actions/dialog';
+import storyReducer from './story';
+import navReducer from './nav';
+import createCategory from './createCategory';
+import statusReducer from './status';
 
 const createRootReducer = () => {
-  const story = (state: Story|null = null, action: Action<Payload, MetaData>) => {
-    switch (action.type) {
-      case FETCH_STORY:
-        return state;
-      case FETCH_STORY_FULFILLED:
-        return action.payload;
-      default:
-        return state;
-    }
-  };
-
-  const isFetching = (state: boolean = false, action: Action<Payload, MetaData>) => {
-    switch (action.type) {
-      case FETCH_NEWS:
-      case FETCH_STORY:
-        return true;
-      case FETCH_NEWS_FULFILLED:
-      case FETCH_STORY_FULFILLED:
-        return false;
-      default:
-        return state;
-    }
-  };
-
-  const nav = (state: boolean = false, action: Action<Payload, MetaData>) => {
-    switch (action.type) {
-      case CHANGE_NAV:
-        return action.payload;
-      case CLOSE_NAV:
-        return false;
-      case TOGGLE_NAV:
-        return !state;
-      default:
-        return state;
-    }
-  };
-
-  const topCategory = (state: Category = {
-    type: 'topstories', pageAt: 1, pageCount: 50, cachedNews: {}
-  }, action: Action<Payload, MetaData>) => {
-    switch (action.type) {
-      case FETCH_PAGE_COUNT_FULFILLED:
-        if (action.metadata === state.type) {
-          return Object.assign({}, state, {
-            pageCount: action.payload,
-          });
-        }
-        return state;
-      case FETCH_NEWS_FULFILLED:
-        const fetchedAction = <NewsFetchFulfilledAction> action;
-        if (fetchedAction.metadata.type === 'topstories') {
-          const newCache = Object.assign({}, state.cachedNews, {
-            [fetchedAction.metadata.id]: fetchedAction.payload,
-          });
-
-          return Object.assign({}, state, {
-            cachedNews: newCache,
-          });
-        }
-        return state;
-      default:
-        return state;
-    }
-  };
-
-  // TODO: Remove duplication
-  const newCategory = (state: Category = {
-    type: 'newstories', pageAt: 1, pageCount: 50, cachedNews: {}
-  }, action: NewsFetchFulfilledAction|PageCountFetchFulfilledAction) => {
-    switch (action.type) {
-      case FETCH_PAGE_COUNT_FULFILLED:
-        if (action.metadata === state.type) {
-          return Object.assign({}, state, {
-            pageCount: action.payload,
-          });
-        }
-        return state;
-      case FETCH_NEWS_FULFILLED:
-        const fetchedAction = <NewsFetchFulfilledAction> action;
-        if (fetchedAction.metadata.type === 'newstories') {
-          const newCache = Object.assign({}, state.cachedNews, {
-            [fetchedAction.metadata.id]: fetchedAction.payload,
-          });
-
-          return Object.assign({}, state, {
-            cachedNews: newCache,
-          });
-        }
-        return state;
-      default:
-        return state;
-    }
-  };
-
-  const error = (state: boolean = false, action: Action<Payload, MetaData>) => {
-    switch (action.type) {
-      case FETCH_NEWS_REJECTED:
-      case FETCH_STORY_REJECTED:
-        return true;
-      case CLOSE_DIALOG:
-        return false;
-      default:
-        return state;
-    }
-  };
-
-  const msg = (state: string = '', action: Action<Payload, MetaData>) => {
-    switch (action.type) {
-      case FETCH_NEWS_REJECTED:
-      case FETCH_STORY_REJECTED:
-        return action.payload;
-      default:
-        return state;
-    }
-  };
-
   return combineReducers({
-    isFetching,
-    story,
-    nav,
-    newCategory,
-    topCategory,
-    error,
-    msg,
+    story: storyReducer,
+    nav: navReducer,
+    newCategory: createCategory('newstories'),
+    topCategory: createCategory('topstories'),
+    status: statusReducer,
   });
 };
 

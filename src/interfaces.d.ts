@@ -47,6 +47,7 @@ interface Action<Payload, MetaData> {
   metadata: MetaData;
 }
 
+type ReduxAction = Action<Payload, MetaData>
 type NewsFetchRequestAction = Action<string, number>
 type NewsFetchFulfilledAction = Action<Story[], Page>
 type CommentFetchRequestAction = Action<string, null>
