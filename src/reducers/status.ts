@@ -32,7 +32,7 @@ const msg = (state: string = '', action: ReduxAction) => {
   switch (action.type) {
     case FETCH_NEWS_REJECTED:
     case FETCH_STORY_REJECTED:
-      return action.payload;
+      return action.payload || '';
     default:
       return state;
   }
