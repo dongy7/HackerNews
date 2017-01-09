@@ -21,8 +21,8 @@ const NewsList = (
         />
         <Grid>
           <Row>
-            <Col xs={2} md={3} />
-            <Col xs={8} md={12}>
+            <Col xs={0} md={3} />
+            <Col xs={12} md={12}>
               <Card>
                 <List>
                   {props.news.map(story => {
