@@ -54,7 +54,6 @@ type StoryFetchRequestAction = Action<string, null>
 type PageCountFetchFulfilledAction = Action<number, string>
 
 interface State {
-  news: Story[];
   isFetching: boolean;
   story: Story;
   nav: boolean;

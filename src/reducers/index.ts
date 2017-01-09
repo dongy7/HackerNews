@@ -5,17 +5,6 @@ import {CHANGE_NAV, CLOSE_NAV, TOGGLE_NAV} from '../actions/nav';
 import {CLOSE_DIALOG} from '../actions/dialog';
 
 const createRootReducer = () => {
-  const news = (state: Story[] = [], action: Action<Payload, MetaData>) => {
-    switch (action.type) {
-      case FETCH_NEWS:
-        return state;
-      case FETCH_NEWS_FULFILLED:
-        return action.payload;
-      default:
-        return state;
-    }
-  };
-
   const story = (state: Story|null = null, action: Action<Payload, MetaData>) => {
     switch (action.type) {
       case FETCH_STORY:
@@ -133,7 +122,6 @@ const createRootReducer = () => {
   };
 
   return combineReducers({
-    news,
     isFetching,
     story,
     nav,
@@ -145,10 +133,6 @@ const createRootReducer = () => {
 };
 
 export default createRootReducer;
-
-export const getNewsList = (state: State) => {
-  return state.news;
-};
 
 export const getIsFetching = (state: State) => {
   return state.isFetching;
