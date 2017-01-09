@@ -10,5 +10,4 @@ export const fetchStory = (id: string) => ({
 export const fetchStoryFulfilled = (story: Story) => ({
   type: FETCH_STORY_FULFILLED,
   payload: story,
-  metadata: null,
 });
