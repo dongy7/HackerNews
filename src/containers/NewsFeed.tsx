@@ -7,7 +7,7 @@ import Spinner from '../components/Spinner';
 import {fetchNews} from '../actions/news';
 import {changePage} from '../actions/nav';
 import {
-  getNewsList, getIsFetching,
+  getIsFetching,
   getTopPageCount, getNewPageCount,
   getCachedNewPage, getCachedTopPage
 } from '../reducers';
@@ -98,7 +98,6 @@ class NewsFeedWrapper extends React.Component<Props, null> {
 }
 
 const mapStateToProps = (state: State) => ({
-  news: getNewsList(state),
   isFetching: getIsFetching(state),
   topPageCount: getTopPageCount(state),
   newPageCount: getNewPageCount(state),

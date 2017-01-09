@@ -25,7 +25,7 @@ const createCategory = (type) => {
   const cachedNews = (state: NewsCache = {}, action: NewsFetchFulfilledAction) => {
     switch (action.type) {
       case FETCH_NEWS_FULFILLED:
-        if (action.metadata.type === action.type) {
+        if (action.metadata.type === type) {
           return Object.assign({}, state, {
             [action.metadata.id]: action.payload,
           });
