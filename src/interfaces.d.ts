@@ -22,8 +22,8 @@ interface Story {
   comments_count: number;
 }
 
-type Payload = string|Story|Story[]|boolean
-type MetaData = number|null|undefined
+type Payload = string|Story|Story[]|boolean|number
+type MetaData = number|string|null|undefined
 
 interface Action<Payload, MetaData> {
   type: string;
@@ -35,6 +35,7 @@ type NewsFetchRequestAction = Action<string, number>
 type NewsFetchFulfilledAction = Action<Story[], null>
 type CommentFetchRequestAction = Action<string, null>
 type StoryFetchRequestAction = Action<string, null>
+type PageCountFetchFulfilledAction = Action<number, string>
 
 interface State {
   news: Story[];
