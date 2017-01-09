@@ -33,17 +33,22 @@ interface Category {
   cachedNews: NewsCache;
 }
 
+interface Page {
+  type: string;
+  id: number;
+}
+
 type Payload = string|Story|Story[]|boolean|number
-type MetaData = number|string|null|undefined
+type MetaData = number|string|Page|null|undefined
 
 interface Action<Payload, MetaData> {
   type: string;
   payload: Payload;
-  metadata?: MetaData;
+  metadata: MetaData;
 }
 
 type NewsFetchRequestAction = Action<string, number>
-type NewsFetchFulfilledAction = Action<Story[], null>
+type NewsFetchFulfilledAction = Action<Story[], Page>
 type CommentFetchRequestAction = Action<string, null>
 type StoryFetchRequestAction = Action<string, null>
 type PageCountFetchFulfilledAction = Action<number, string>

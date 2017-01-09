@@ -63,19 +63,44 @@ const createRootReducer = () => {
           });
         }
         return state;
+      case FETCH_NEWS_FULFILLED:
+        const fetchedAction = <NewsFetchFulfilledAction> action;
+        if (fetchedAction.metadata.type === 'topstories') {
+          const newCache = Object.assign({}, state.cachedNews, {
+            [fetchedAction.metadata.id]: fetchedAction.payload,
+          });
+
+          return Object.assign({}, state, {
+            cachedNews: newCache,
+          });
+        }
+        return state;
       default:
         return state;
     }
   };
 
+  // TODO: Remove duplication
   const newCategory = (state: Category = {
     type: 'newstories', pageAt: 1, pageCount: 50, cachedNews: {}
-  }, action: Action<Payload, MetaData>) => {
+  }, action: NewsFetchFulfilledAction|PageCountFetchFulfilledAction) => {
     switch (action.type) {
       case FETCH_PAGE_COUNT_FULFILLED:
         if (action.metadata === state.type) {
           return Object.assign({}, state, {
             pageCount: action.payload,
+          });
+        }
+        return state;
+      case FETCH_NEWS_FULFILLED:
+        const fetchedAction = <NewsFetchFulfilledAction> action;
+        if (fetchedAction.metadata.type === 'newstories') {
+          const newCache = Object.assign({}, state.cachedNews, {
+            [fetchedAction.metadata.id]: fetchedAction.payload,
+          });
+
+          return Object.assign({}, state, {
+            cachedNews: newCache,
           });
         }
         return state;
@@ -118,4 +143,12 @@ export const getTopPageCount = (state: State) => {
 
 export const getNewPageCount = (state: State) => {
   return state.newCategory.pageCount;
+};
+
+export const getCachedTopPage = (state: State, pageNumber: number) => {
+  return state.topCategory.cachedNews[pageNumber] || [];
+};
+
+export const getCachedNewPage = (state: State, pageNumber: number) => {
+  return state.newCategory.cachedNews[pageNumber] || [];
 };

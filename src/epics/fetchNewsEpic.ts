@@ -25,5 +25,5 @@ export const fetchNewsEpic = (action$: ActionsObservable<Action<Payload, MetaDat
           []
         )
         .takeLast(1)
-        .map(res => fetchNewsFulfilled(res))
+        .map(res => fetchNewsFulfilled(res, action.payload, action.metadata || 1)) // TODO: avoid short circuit
     );

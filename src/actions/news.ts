@@ -8,10 +8,10 @@ export const fetchNews = (type: string, page: number): NewsFetchRequestAction =>
   metadata: page,
 });
 
-export const fetchNewsFulfilled = (res: Story[]): NewsFetchFulfilledAction => ({
+export const fetchNewsFulfilled = (res: Story[], type: string, id: number): NewsFetchFulfilledAction => ({
   type: FETCH_NEWS_FULFILLED,
   payload: res,
-  metadata: null,
+  metadata: { type, id },
 });
 
 export const fetchPageCountFulfilled = (res: number, type: string): PageCountFetchFulfilledAction => ({
