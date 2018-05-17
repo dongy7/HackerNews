@@ -4,12 +4,9 @@ import Divder from 'material-ui/Divider'
 import CommentList from './CommentList'
 class News extends React.Component {
   render() {
-    const cardStyle = {
-      margin: '15px'
-    }
     return (
-      <div>
-        <Card style={cardStyle}>
+      <div className="view">
+        <Card>
           <CardTitle
             title={<a href={this.props.story.url}>{this.props.story.title}</a>}
             subtitle={`${this.props.story.points} points by ${
@@ -17,7 +14,7 @@ class News extends React.Component {
             }`}
           />
         </Card>
-        <Card style={cardStyle}>
+        <Card className="view-comments">
           <CardTitle title={`${this.props.story.comments_count} Comments`} />
           <Divder />
           <CardText>

@@ -1,7 +1,6 @@
 import * as React from 'react'
 import { Card } from 'material-ui/Card'
 import { List, ListItem } from 'material-ui/List'
-import { Grid, Row, Col } from 'react-bootstrap'
 import PageNavbar from './PageNavbar'
 const NewsList = props => {
   return (
@@ -13,38 +12,34 @@ const NewsList = props => {
         onRightClick={props.onRightNav}
         onPageChange={props.onPageChange}
       />
-      <Grid>
-        <Row>
-          <Col xs={0} md={2} />
-          <Col xs={12} md={8}>
-            <Card className="main-card">
-              <List>
-                {props.news.map(story => {
-                  const infoText = (
-                    <div>
-                      {`${story.points} points by ${story.user} ${
-                        story.time_ago
-                      } | `}
-                      <a onClick={() => props.onClick(story.id)}>
-                        {`${story.comments_count} comments`}
-                      </a>
-                    </div>
-                  )
-                  return (
-                    <ListItem
-                      key={story.id}
-                      primaryText={<a href={story.url}>{story.title}</a>}
-                      secondaryText={infoText}
-                      disabled
-                    />
-                  )
-                })}
-              </List>
-            </Card>
-          </Col>
-          <Col xsHidden md={2} />
-        </Row>
-      </Grid>
+
+      <div className="view">
+        <Card className="main-card">
+          <List>
+            {props.news.map(story => {
+              const infoText = (
+                <div>
+                  {`${story.points} points by ${story.user} ${
+                    story.time_ago
+                    } | `}
+                  <a onClick={() => props.onClick(story.id)}>
+                    {`${story.comments_count} comments`}
+                  </a>
+                </div>
+              )
+              return (
+                <ListItem
+                  key={story.id}
+                  className="news-item"
+                  primaryText={<a href={story.url}>{story.title}</a>}
+                  secondaryText={infoText}
+                  disabled
+                />
+              )
+            })}
+          </List>
+        </Card>
+      </div>
     </div>
   )
 }

@@ -20,6 +20,20 @@ a {
   margin: 30px 0;
 }
 
+.news-item {
+  border-bottom: 1px solid #eee;
+}
+
+.view {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.view-comments {
+  margin-top: 10px;
+}
+
 .vertical-center {
   min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
   min-height: 100vh; /* These two lines are counted as one :-)       */

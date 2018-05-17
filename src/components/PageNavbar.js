@@ -8,7 +8,7 @@ const PageNavbar = props => {
   const rightDisabled = props.page === props.pageCount
   return (
     <div>
-      <Toolbar>
+      <Toolbar style={{ backgroundColor: '#fff' }}>
         <ToolbarGroup firstChild>
           <IconButton
             disabled={leftDisabled}
