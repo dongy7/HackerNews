@@ -17,7 +17,7 @@ class News extends React.Component {
           />
         </Card>
         <Card className="view-comments">
-          <CardTitle title={`${this.props.story.comments_count} Comments`} />
+          <CardTitle title={`${this.props.story.comments_count} Comments`} style={{ paddingLeft: '32px' }} />
           <Divder />
           <CardText>
             <ThreadedCommentList comments={this.props.story.comments} />
