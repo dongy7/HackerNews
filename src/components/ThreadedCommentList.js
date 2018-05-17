@@ -1,7 +1,6 @@
 import * as React from 'react'
 import * as marked from 'marked'
 import { CardText } from 'material-ui/Card'
-import Divder from 'material-ui/Divider'
 import classNames from 'classnames'
 
 class Comment extends React.Component {
@@ -61,10 +60,6 @@ class CommentList extends React.Component {
 }
 
 class CommentItems extends React.Component {
-  constructor(props) {
-    super(props)
-  }
-
   constructCommentList(comment) {
     const replyLength = comment.comments.length
     if (replyLength > 0) {

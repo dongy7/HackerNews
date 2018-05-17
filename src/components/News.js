@@ -1,7 +1,6 @@
 import * as React from 'react'
 import { Card, CardTitle, CardText } from 'material-ui/Card'
 import Divder from 'material-ui/Divider'
-import CommentList from './CommentList'
 import ThreadedCommentList from './ThreadedCommentList'
 
 class News extends React.Component {
