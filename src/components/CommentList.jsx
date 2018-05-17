@@ -21,7 +21,7 @@ class CommentList extends React.Component {
         {getCommentThread(this.props.comments).map(comment => {
             return (<div key={comment.id} style={{ marginLeft: `${comment.level * 20}px` }}>
               <CardText>
-                <p dangerouslySetInnerHTML={{ __html: marked(comment.content) }}/>
+                <p dangerouslySetInnerHTML={{ __html: marked(comment.content || '') }}/>
                 <br />
                 {<b>{`${comment.user}`}</b>}
                 {` ${comment.time_ago}`}
