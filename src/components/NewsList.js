@@ -15,7 +15,7 @@ const NewsList = props => {
 
       <div className="view">
         <Card className="main-card">
-          <List>
+          <List style={{ paddingBottom: 0 }}>
             {props.news.map(story => {
               const infoText = (
                 <div>

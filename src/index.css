@@ -23,6 +23,10 @@ a {
   border-bottom: 1px solid #eee;
 }
 
+.main-card a {
+  cursor: pointer;
+}
+
 .view {
   max-width: 800px;
   margin: 0 auto;
@@ -45,12 +49,6 @@ a {
 
 .comment .by a {
   color: #828282;
-}
-
-.comment .toggle {
-  background-color: #fffbf2;
-  padding: .3em .5em;
-  border-radius: 4px;
 }
 
 .comment .toggle.open {

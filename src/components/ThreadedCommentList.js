@@ -15,7 +15,7 @@ class Comment extends React.Component {
   render() {
     const { comment } = this.props
     const toggleClass = classNames({
-      toggled: true,
+      toggle: true,
       open: this.state.toggled
     })
     const commentClass = classNames({
