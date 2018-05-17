@@ -1,8 +1,9 @@
 language: node_js
 node_js:
-- '6'
+  - 6
 cache:
-  yarn: true
+  directories:
+    - node_modules
 deploy:
   provider: heroku
   api_key:
@@ -10,3 +11,5 @@ deploy:
   app: hnews-client
   on:
     repo: dongy7/HackerNews
+script:
+  - npm run build
