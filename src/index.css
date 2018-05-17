@@ -13,7 +13,6 @@ body {
 a {
   color: #34495e;
   text-decoration: none;
-  cursor: pointer;
 }
 
 .main-card {
@@ -34,13 +33,36 @@ a {
   margin-top: 10px;
 }
 
-.by {
+.comment-children {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.comment .by {
   color: #828282;
 }
 
-.by a {
+.comment .by a {
   color: #828282;
-  text-decoration: underline;
+}
+
+.comment .toggle {
+  background-color: #fffbf2;
+  padding: .3em .5em;
+  border-radius: 4px;
+}
+
+.comment .toggle.open {
+  padding: 0;
+  background-color: transparent;
+  margin-bottom: -.5em;
+}
+
+.comment .by .toggle a {
+  color: #828282;
+  cursor: pointer;
+  text-decoration: none;
 }
 
 .vertical-center {

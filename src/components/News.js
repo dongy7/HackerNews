@@ -2,6 +2,8 @@ import * as React from 'react'
 import { Card, CardTitle, CardText } from 'material-ui/Card'
 import Divder from 'material-ui/Divider'
 import CommentList from './CommentList'
+import ThreadedCommentList from './ThreadedCommentList'
+
 class News extends React.Component {
   render() {
     return (
@@ -18,7 +20,7 @@ class News extends React.Component {
           <CardTitle title={`${this.props.story.comments_count} Comments`} />
           <Divder />
           <CardText>
-            <CommentList comments={this.props.story.comments} />
+            <ThreadedCommentList comments={this.props.story.comments} />
           </CardText>
         </Card>
       </div>
