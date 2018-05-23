@@ -6,13 +6,33 @@ import { Link } from 'react-router'
 const menuItems = [
   {
     key: 0,
-    route: '/feed/topstories',
-    text: 'Top Stories'
+    route: '/topstories',
+    text: 'Top'
   },
   {
     key: 1,
-    route: '/feed/newstories',
-    text: 'New Stories'
+    route: '/newstories',
+    text: 'New'
+  },
+  {
+    key: 2,
+    route: '/beststories',
+    text: 'Best'
+  },
+  {
+    key: 3,
+    route: '/askstories',
+    text: 'Ask'
+  },
+  {
+    key: 4,
+    route: '/showstories',
+    text: 'Show'
+  },
+  {
+    key: 5,
+    route: '/jobstories',
+    text: 'Jobs'
   }
 ]
 class Navbar extends React.Component {

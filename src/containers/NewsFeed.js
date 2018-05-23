@@ -10,7 +10,8 @@ import {
   getTopPageCount,
   getNewPageCount,
   getCachedNewPage,
-  getCachedTopPage
+  getCachedTopPage,
+  getCachedPage
 } from '../reducers'
 class NewsFeedWrapper extends React.Component {
   getPage() {
@@ -30,9 +31,10 @@ class NewsFeedWrapper extends React.Component {
   }
   fetchCachedStories() {
     const pageNumber = this.getPage()
-    return this.getType() === 'topstories'
-      ? this.props.getCachedTopPage(pageNumber)
-      : this.props.getCachedNewPage(pageNumber)
+    return this.props.getCachedPage(this.getType(), pageNumber)
+    // return this.getType() === 'topstories'
+    //   ? this.props.getCachedTopPage(pageNumber)
+    //   : this.props.getCachedNewPage(pageNumber)
   }
   fetchStories() {
     const page = this.getPage()
@@ -68,12 +70,12 @@ class NewsFeedWrapper extends React.Component {
         }}
         onLeftNav={() => {
           this.props.router.push(
-            `/feed/${this.getType()}/${this.getPage() - 1}`
+            `/${this.getType()}/${this.getPage() - 1}`
           )
         }}
         onRightNav={() => {
           this.props.router.push(
-            `/feed/${this.getType()}/${this.getPage() + 1}`
+            `/${this.getType()}/${this.getPage() + 1}`
           )
         }}
       />
@@ -85,7 +87,8 @@ const mapStateToProps = state => ({
   topPageCount: getTopPageCount(state),
   newPageCount: getNewPageCount(state),
   getCachedTopPage: id => getCachedTopPage(state, id),
-  getCachedNewPage: id => getCachedNewPage(state, id)
+  getCachedNewPage: id => getCachedNewPage(state, id),
+  getCachedPage: (category, id) => getCachedPage(state, category, id)
 })
 const mapDispatchToProps = dispatch => ({
   fetch: (type, page) => {

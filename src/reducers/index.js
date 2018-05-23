@@ -9,6 +9,10 @@ const createRootReducer = () => {
     nav: navReducer,
     newCategory: createCategory('newstories'),
     topCategory: createCategory('topstories'),
+    bestCategory: createCategory('beststories'),
+    askCategory: createCategory('askstories'),
+    showCategory: createCategory('showstories'),
+    jobCategory: createCategory('jobstories'),
     status: statusReducer
   })
 }
@@ -34,6 +38,14 @@ export const getCachedTopPage = (state, pageNumber) => {
 export const getCachedNewPage = (state, pageNumber) => {
   return state.newCategory.cachedNews[pageNumber] || []
 }
+
+export const getCachedPage = (state, category, pageNumber) => {
+  // topstories -> top
+  const storyIndex = category.indexOf('stories')
+  const name = category.substring(0, storyIndex)
+  return state[`${name}Category`].cachedNews[pageNumber] || []
+}
+
 export const getError = state => {
   return state.status.error
 }
