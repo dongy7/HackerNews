@@ -11,5 +11,3 @@ deploy:
   app: hnews-client
   on:
     repo: dongy7/HackerNews
-script:
-  - npm run build

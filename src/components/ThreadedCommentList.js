@@ -35,11 +35,13 @@ class Comment extends React.Component {
             </span>
           ) : (<span />)}
         </div>
-        <p
-          dangerouslySetInnerHTML={{
-            __html: marked(comment.content || '')
-          }}
-        />
+        <div className="text">
+          <p
+            dangerouslySetInnerHTML={{
+              __html: marked(comment.content || '')
+            }}
+          />
+        </div>
 
         <div style={style}>
           {this.props.children}

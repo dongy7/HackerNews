@@ -63,6 +63,14 @@ a {
   text-decoration: none;
 }
 
+.comment .text {
+  overflow-wrap: break-word;
+}
+
+.comment .text pre {
+  white-space: pre-wrap;
+}
+
 .vertical-center {
   min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
   min-height: 100vh; /* These two lines are counted as one :-)       */

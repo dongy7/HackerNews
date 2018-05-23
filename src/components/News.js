@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { Card, CardTitle, CardText } from 'material-ui/Card'
-import Divder from 'material-ui/Divider'
+import Divider from 'material-ui/Divider'
 import ThreadedCommentList from './ThreadedCommentList'
 
 class News extends React.Component {
@@ -16,10 +16,12 @@ class News extends React.Component {
           />
         </Card>
         <Card className="view-comments">
-          <CardTitle title={`${this.props.story.comments_count} Comments`} style={{ paddingLeft: '32px' }} />
-          <Divder />
           <CardText>
-            <ThreadedCommentList comments={this.props.story.comments} />
+            <CardText style={{ fontSize: '1.1em' }}>
+              {`${this.props.story.comments_count} Comments`}
+            </CardText>
+            <Divider />
+            <ThreadedCommentList count={this.props.story.comments_count} comments={this.props.story.comments} />
           </CardText>
         </Card>
       </div>
